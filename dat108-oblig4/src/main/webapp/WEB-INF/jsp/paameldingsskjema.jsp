@@ -1,0 +1,129 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- Fra https://purecss.io/ -->
+<link rel="stylesheet"
+	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+<title>Påmelding</title>
+<style>
+input[type="text"], input[type="password"] {
+	border-color: green!important;
+}
+input[type="text"]:invalid, input[type="password"]:invalid {
+	border-color: red!important;
+}
+input[type="password"].password-weak {
+	border-color: yellow!important;
+}
+
+</style>
+<script>
+	
+	class PasswordValidator {
+		// Returns strength level (1 = weak, 2 = strong)
+		getPasswordStrength(password) {
+			if(password.length <= 14) return 1;
+			else return 2;
+		}
+	}
+	
+	class DOMPasswordWatcher {
+		constructor(validator) {
+			this.validator = validator;
+		}
+		
+		watch(dom) {
+			dom.addEventListener("input", this.onChange.bind(this));
+		}
+		
+		onChange(e) {
+			e.target.classList.remove("password-weak");
+			if(e.target.validity.valid) {
+				let password = e.target.value;
+				let strength = this.validator.getPasswordStrength(password);
+				if(strength == 1) {
+					// Weak
+					e.target.classList.add("password-weak");
+				} 
+			}
+		}
+	}
+	
+	class PasswordDOMComparator {
+		listen(domPassword, domRepeatPassword) {
+			let func = this.onChange.bind(this, domPassword, domRepeatPassword);
+			domPassword.addEventListener("input", func);
+			domRepeatPassword.addEventListener("input", func);
+		}
+		
+		onChange(domPassword, domRepeatPassword, e) {
+			let equal = (domPassword.value === domRepeatPassword.value);
+			if (equal) {
+				domRepeatPassword.setCustomValidity("");
+			} else {
+				domRepeatPassword.setCustomValidity("Repetert passord er feil!");
+			}
+		}
+	}
+	
+	window.onload = function() {
+		let validator = new PasswordValidator();
+		let passwordWatcher = new DOMPasswordWatcher(validator);
+		let passwordComparator = new PasswordDOMComparator();
+		
+		let domPassword = document.getElementById("password");
+		let domRepeatPassword = document.getElementById("repeat-password");
+		passwordWatcher.watch(domPassword);
+		passwordComparator.listen(domPassword, domRepeatPassword);
+	}
+	
+</script>
+</head>
+<body>
+	<h2>Påmelding</h2>
+	<form method="post" class="pure-form pure-form-aligned">
+		<fieldset>
+			<div class="pure-control-group">
+				<label for="fornavn">Fornavn:</label>
+				<!-- Oppgaven spesifiserer ikke om store bokstaver er tillatt etter første tegn i fornavn. -->
+				<!-- Beskrivelse på side 10 stemmer ikke med bildet på side 7. -->
+				<input type="text" name="fornavn" value="" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå -]{1,19}$"/>
+				<font color="red">Ugyldig fornavn</font>
+			</div>
+			<div class="pure-control-group">
+				<label for="etternavn">Etternavn:</label>
+				<input type="text" name="etternavn" value="" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå-]{1,19}$"/>
+				<font color="red">Ugyldig etternavn</font>
+			</div>
+			<div class="pure-control-group">
+				<label for="mobil">Mobil (8 siffer):</label>
+				<input type="text" name="mobil" value="" required pattern="^\d{8}$"/>
+				<font color="red">Ugyldig mobil</font>
+			</div>
+			<div class="pure-control-group">
+				<label for="password">Passord:</label>
+				<input type="password" name="passord" value="" required minlength="8" id="password"/>
+				<font color="red">Ugyldig passord</font>
+			</div>
+			<div class="pure-control-group">
+				<label for="passordRepetert">Passord repetert:</label>
+				<input type="password" name="passordRepetert" value="" required id="repeat-password"/>
+				<font color="red">Passordene må være like</font>
+			</div>
+			<div class="pure-control-group">
+				<label for="kjonn">Kjønn:</label>
+				<input type="radio" name="kjonn" value="mann" checked />mann
+				<input type="radio" name="kjonn" value="kvinne" />kvinne
+				<font color="red">Du må oppgi kjonn</font>
+			</div>
+			<div class="pure-controls">
+				<button type="submit" class="pure-button pure-button-primary">Meld meg på</button>
+			</div>
+		</fieldset>
+	</form>
+</body>
+</html>
