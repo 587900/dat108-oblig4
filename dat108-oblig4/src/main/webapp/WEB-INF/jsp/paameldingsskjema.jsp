@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -79,6 +80,9 @@ input[type="password"].password-weak {
 		let domRepeatPassword = document.getElementById("repeat-password");
 		passwordWatcher.watch(domPassword);
 		passwordComparator.listen(domPassword, domRepeatPassword);
+		
+		let event = new Event("input", {});
+		domPassword.dispatchEvent(event);
 	}
 	
 </script>
@@ -91,34 +95,35 @@ input[type="password"].password-weak {
 				<label for="fornavn">Fornavn:</label>
 				<!-- Oppgaven spesifiserer ikke om store bokstaver er tillatt etter første tegn i fornavn. -->
 				<!-- Beskrivelse på side 10 stemmer ikke med bildet på side 7. -->
-				<input type="text" name="fornavn" value="" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå -]{1,19}$"/>
-				<font color="red">Ugyldig fornavn</font>
+				<input type="text" name="firstname" value="${firstname}" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå -]{1,19}$"/>
+				<c:if test="${error == true && empty firstname}"><font color="red">Ugyldig fornavn</font></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="etternavn">Etternavn:</label>
-				<input type="text" name="etternavn" value="" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå-]{1,19}$"/>
-				<font color="red">Ugyldig etternavn</font>
+				<input type="text" name="lastname" value="${lastname}" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå-]{1,19}$"/>
+				<c:if test="${error == true && empty lastname}"><font color="red">Ugyldig etternavn</font></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="mobil">Mobil (8 siffer):</label>
-				<input type="text" name="mobil" value="" required pattern="^\d{8}$"/>
-				<font color="red">Ugyldig mobil</font>
+				<input type="text" name="cell" value="${cell}" required pattern="^\d{8}$"/>
+				<c:if test="${error == true && empty cell}"><font color="red">Ugyldig mobil</font></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="password">Passord:</label>
-				<input type="password" name="passord" value="" required minlength="8" id="password"/>
-				<font color="red">Ugyldig passord</font>
+				<input type="password" name="password" value="${password}" required minlength="8" id="password"/>
+				<c:if test="${error == true && empty password}"><font color="red">Passord må være 8 tegn eller mer.</font></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="passordRepetert">Passord repetert:</label>
-				<input type="password" name="passordRepetert" value="" required id="repeat-password"/>
-				<font color="red">Passordene må være like</font>
+				<input type="password" name="passwordRepeated" value="${passwordRepeated}" required id="repeat-password"/>
+				<c:if test="${error == true && empty passwordRepeated}"><font color="red">Passordene må være like.</font></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="kjonn">Kjønn:</label>
-				<input type="radio" name="kjonn" value="mann" checked />mann
-				<input type="radio" name="kjonn" value="kvinne" />kvinne
-				<font color="red">Du må oppgi kjonn</font>
+				<input type="radio" name="sex" value="m" ${sex == "m" ? "checked":""} required/>mann
+				<input type="radio" name="sex" value="f" ${sex == "f" ? "checked":""}/>kvinne
+				<!-- Denne error-en vil nok aldri forekomme. -->
+				<c:if test="${error == true && empty sex}"><font color="red">Du må oppgi kjønn.</font></c:if>
 			</div>
 			<div class="pure-controls">
 				<button type="submit" class="pure-button pure-button-primary">Meld meg på</button>
