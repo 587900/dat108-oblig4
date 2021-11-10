@@ -7,21 +7,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+// TODO jsp password: Legg inn variabel for lengde i .xml
+// TODO Side dersom allerede logget inn
+// TODO Outline input fields med grønn/rød
+
 @WebServlet("/logginn")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.getRequestDispatcher("WEB-INF/jsp/loggin.jsp").forward(request, response);
+		
+		if(request.getParameter("wrong") != null) request.setAttribute("wrong", true);
+		
+		request.getRequestDispatcher("WEB-INF/jsp/logginn.jsp").forward(request, response);
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println(request.getParameter("fornavn"));
+		request.setCharacterEncoding("UTF-8");
 		
-		doGet(request, response);
+		String cell = request.getParameter("cell");
+		String password = request.getParameter("password");
+		
+		if(cell == null || password == null) {
+			response.sendError(400);
+			return;
+		}
+		
+		User user = UsersUtil.tryGetUser(cell, password);
+		if(user == null) {
+			response.sendRedirect("/logginn?wrong");
+			return;
+		}
+		
+		LoginUtil.login(request, user);
+		response.sendRedirect("/deltagerliste");
 	}
 
 }

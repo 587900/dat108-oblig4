@@ -106,7 +106,8 @@ input[type="password"].password-weak {
 			<div class="pure-control-group">
 				<label for="mobil">Mobil (8 siffer):</label>
 				<input type="text" name="cell" value="${cell}" required pattern="^\d{8}$"/>
-				<c:if test="${error == true && empty cell}"><font color="red">Ugyldig mobil</font></c:if>
+				<c:if test="${error == true && userexists != true && empty cell}"><font color="red">Ugyldig mobil</font></c:if>
+				<c:if test="${error == true && userexists == true}"><font color="red">Mobilnummer allerede registrert.</font></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="password">Passord:</label>
@@ -130,5 +131,6 @@ input[type="password"].password-weak {
 			</div>
 		</fieldset>
 	</form>
+	<p>Allerede registrert? <a href="logginn">Logg inn her.</a></p>
 </body>
 </html>

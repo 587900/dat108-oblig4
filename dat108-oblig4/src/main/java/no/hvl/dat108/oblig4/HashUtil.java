@@ -9,10 +9,10 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-// Implementation is PBKDF2WithHmacSHA256, saltgen algorithm is SHA256PRNG
+// Implementation is PBKDF2WithHmacSHA256, saltgen algorithm is SHA1PRNG
 public class HashUtil {
 
-	private static final String SALT_ALGORITHM = "SHA256PRNG";
+	private static final String SALT_ALGORITHM = "SHA1PRNG";
 	private static final String HASH_ALGORITHM = "PBKDF2WithHmacSHA256";
 	private static final int ITERATIONS = 1000;
 	private static final int KEY_BIT_LENGTH = 256;
@@ -29,6 +29,7 @@ public class HashUtil {
 		}
 	}
 
+	// TODO Timing attacks
 	public boolean check(String password, String salt, String hash) {
 		String hash2 = hash(password, salt);
 		return hash2.equals(hash);

@@ -28,4 +28,24 @@ public class User {
 		String hash = hashUtil.hash(password, salt);
 		return new User(firstname, lastname, cell, hash, salt, sex);
 	}
+
+	public String getCell() {
+		return cell;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+	
+	public String getLastname() {
+		return lastname;
+	}
+	
+	public String getSex() {
+		return sex;
+	}
+	
+	public boolean checkPassword(String password) {
+		return hashUtil.check(password, salt, hash);
+	}
 }

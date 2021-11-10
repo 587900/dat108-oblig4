@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,16 +15,17 @@
 	<h2>Logg inn</h2>
 	<p>Det er kun registrerte deltagere som får se deltagerlisten.</p>
 	<p>
-		<font color="red">Ugyldig brukernavn og/eller passord</font>
+		<c:if test="${wrong == true}"><font color="red">Ugyldig mobilnummer og/eller passord</font></c:if>
 	</p>
 	<form method="post" class="pure-form pure-form-aligned">
 		<fieldset>
 			<div class="pure-control-group">
-				<label for="mobil">Mobil:</label> <input type="text" name="mobil" />
+				<label for="cell">Mobil:</label>
+				<input type="text" name="cell" required pattern="^\d{8}$"/>
 			</div>
 			<div class="pure-control-group">
-				<label for="passord">Passord:</label> <input type="password"
-					name="passord" />
+				<label for="password">Passord:</label>
+				<input type="password" name="password" required minlength=8/>
 			</div>
 			<div class="pure-controls">
 				<button type="submit" class="pure-button pure-button-primary">Logg

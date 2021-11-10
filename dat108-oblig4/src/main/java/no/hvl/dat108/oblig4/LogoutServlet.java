@@ -12,7 +12,9 @@ public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		LoginUtil.logout(request);
+		
 		request.getRequestDispatcher("WEB-INF/jsp/loggut.jsp").forward(request, response);
 		
 	}

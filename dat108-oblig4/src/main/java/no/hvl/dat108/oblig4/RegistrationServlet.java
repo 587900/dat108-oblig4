@@ -13,13 +13,16 @@ public class RegistrationServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		request.setAttribute("firstname", "Karl");
-//		request.setAttribute("lastname", "Karlsson");
-//		request.setAttribute("cell", "");
-//		request.setAttribute("password", "");
-//		request.setAttribute("passwordRepeated", "");
-//		request.setAttribute("sex", "");
-//		request.setAttribute("error", true);
+		// TODO #1: Vurdér PRG på feilmeldinger
+		// TODO #2: Hvis du er logget inn, vis en spesiell melding
+		// TODO #3: User input sanitazation
+		
+		if(request.getParameter("user-registered") != null) {
+			User user = LoginUtil.getLoggedInUser(request);
+			if(user == null) { response.sendRedirect("/paamelding"); return; }
+			request.getRequestDispatcher("WEB-INF/jsp/paameldingsbekreftelse.jsp").forward(request, response);
+			return;
+		}
 		
 		request.getRequestDispatcher("WEB-INF/jsp/paameldingsskjema.jsp").forward(request, response);
 		
@@ -27,6 +30,8 @@ public class RegistrationServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String cell = request.getParameter("cell");
@@ -53,6 +58,8 @@ public class RegistrationServlet extends HttpServlet {
 		
 		if(!sex.equals("m") && !sex.equals("f")) { sex = ""; error = true; }
 		
+		if(UsersUtil.exists(cell)) { request.setAttribute("userexists", true); cell = ""; error = true; }
+		
 		if(error) {
 			
 			request.setAttribute("firstname", firstname);
@@ -69,6 +76,17 @@ public class RegistrationServlet extends HttpServlet {
 		}
 		
 		User user = User.createNewFromPassword(firstname, lastname, cell, password, sex);
+		boolean success = UsersUtil.addUser(user);
+		if(!success) {
+			response.sendError(500);
+			return;
+		}
+		
+		LoginUtil.login(request, user);
+		
+		// Redirect to this servlet (get)
+		response.sendRedirect("/paamelding?user-registered");
+		
 	}
 
 }

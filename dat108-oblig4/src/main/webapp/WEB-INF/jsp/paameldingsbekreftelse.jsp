@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,9 +15,10 @@
 	<h2>Påmeldingsbekreftelse</h2>
 	<p>Påmeldingen er mottatt for</p>
 	<p>
-		&nbsp;&nbsp;&nbsp;Anne<br />
-		&nbsp;&nbsp;&nbsp;Annesen<br />
-		&nbsp;&nbsp;&nbsp;44554455<br /> &nbsp;&nbsp;&nbsp;kvinne
+		&nbsp;&nbsp;&nbsp;${user.firstname}<br />
+		&nbsp;&nbsp;&nbsp;${user.lastname}<br />
+		&nbsp;&nbsp;&nbsp;${user.cell}<br />
+		&nbsp;&nbsp;&nbsp;${user.sex == 'm' ? 'Mann':'Kvinne'}<br />
 	</p>
 	<a href="deltagerliste">Gå til deltagerlisten</a>
 </body>
