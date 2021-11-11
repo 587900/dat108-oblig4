@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/test/java"/>
-	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-12">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -19,5 +18,8 @@
 	<classpathentry kind="lib" path="/Users/LEB/Documents/Eclipse/DAT107 JPA/dat107-oblig3-jpa/lib/javax.persistence-api-2.2.jar"/>
 	<classpathentry kind="lib" path="/Users/LEB/Downloads/openjpa-3.2.0.jar"/>
 	<classpathentry kind="lib" path="/Users/LEB/Downloads/openjpa-persistence-jdbc-3.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/LEB/Downloads/org.eclipse.persistence.jpa-2.5.0.jar"/>
+	<classpathentry kind="lib" path="/DAT107 JPA/dat107-oblig3-jpa/lib/eclipselink-2.7.7.jar"/>
+	<classpathentry kind="lib" path="/DAT107 JPA/dat107-oblig3-jpa/lib/postgresql-42.2.17.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
