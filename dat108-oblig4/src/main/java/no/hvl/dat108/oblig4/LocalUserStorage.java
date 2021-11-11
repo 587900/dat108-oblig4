@@ -3,7 +3,7 @@ package no.hvl.dat108.oblig4;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class LocalUserStorage implements IUserStorage {
+public class LocalUserStorage extends UserStorage {
 
 	private HashMap<String, User> users;
 	

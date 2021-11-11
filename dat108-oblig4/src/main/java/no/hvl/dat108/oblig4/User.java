@@ -1,16 +1,26 @@
 package no.hvl.dat108.oblig4;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "users", schema = "fest")
+//@NamedQuery(name = "findAllUsers", query ="SELECT a FROM users a")
 public class User {
 	
 	public static HashUtil hashUtil = new HashUtil();
 	
 	private String firstname;
 	private String lastname;
+	@Id
 	private String cell;
 	private String hash;
 	private String salt;
 	private String sex;
 
+	public User() {}
+	
 	private User(String firstname, String lastname, String cell, String hash, String salt, String sex) {
 		// TODO Consider making enum, look into cell phone changes
 		if(!sex.equals("m") && !sex.equals("f")) throw new IllegalArgumentException("Sex must be m or f.");
@@ -47,5 +57,9 @@ public class User {
 	
 	public boolean checkPassword(String password) {
 		return hashUtil.check(password, salt, hash);
+	}
+	
+	public String toString() {
+		return String.format("('%s', '%s', '%s', '%s', '%s', '%s')", firstname, lastname, cell, hash, salt, sex);
 	}
 }

@@ -19,11 +19,11 @@
 			<th align="left">Navn</th>
 			<th align="left">Mobil</th>
 		</tr>
-		<c:forEach var="user" items="${users}">
-			<tr bgcolor="#aaffaa">
-				<td align="center">${user.sex == 'm' ? '&#9794;':'&#9792;'}</td>
-				<td>${user.firstname} ${user.lastname}</td>
-				<td>${user.cell}</td>
+		<c:forEach var="attendee" items="${users}">
+			<tr${attendee.cell == user.cell ? ' bgcolor="#aaffaa"':''}>
+				<td align="center">${attendee.sex == 'm' ? '&#9794;':'&#9792;'}</td>
+				<td>${attendee.firstname} ${attendee.lastname}</td>
+				<td>${attendee.cell}</td>
 			</tr>
 		</c:forEach>
 	</table>

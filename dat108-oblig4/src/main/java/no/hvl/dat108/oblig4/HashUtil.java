@@ -20,6 +20,8 @@ public class HashUtil {
 	private SecureRandom sr;
 	private SecretKeyFactory skf;
 
+	//TODO JUnit
+	
 	public HashUtil() {
 		try {
 			sr = SecureRandom.getInstance(SALT_ALGORITHM);

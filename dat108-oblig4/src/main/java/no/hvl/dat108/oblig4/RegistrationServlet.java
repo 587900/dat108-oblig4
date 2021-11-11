@@ -16,6 +16,7 @@ public class RegistrationServlet extends HttpServlet {
 		// TODO #1: Vurdér PRG på feilmeldinger
 		// TODO #2: Hvis du er logget inn, vis en spesiell melding
 		// TODO #3: User input sanitazation
+		// TODO #4: Sjekk ny HTML
 		
 		if(request.getParameter("user-registered") != null) {
 			User user = LoginUtil.getLoggedInUser(request);
@@ -46,17 +47,12 @@ public class RegistrationServlet extends HttpServlet {
 		
 		boolean error = false;
 		
-		if(!firstname.matches("^[A-ZÆØÅ][A-ZÆØÅa-zæøå -]{1,19}$")) { firstname = ""; error = true; }
-		
-		if(!lastname.matches("^[A-ZÆØÅ][A-ZÆØÅa-zæøå-]{1,19}$")) { lastname = "";  error = true; }
-		
-		if(!cell.matches("^\\d{8}$")) { cell = ""; error = true; }
-		
-		if(password.length() < 8) { password = ""; error = true; }
-		
-		if(!passwordRepeated.equals(password)) { passwordRepeated = ""; error = true; }
-		
-		if(!sex.equals("m") && !sex.equals("f")) { sex = ""; error = true; }
+		if(!WebValidator.firstnameValid(firstname)) { firstname = ""; error = true; }
+		if(!WebValidator.lastnameValid(lastname)) { lastname = "";  error = true; }
+		if(!WebValidator.cellValid(cell)) { cell = ""; error = true; }
+		if(!WebValidator.passwordRepeatedValid(passwordRepeated, password)) { passwordRepeated = ""; error = true; }
+		if(!WebValidator.passwordValid(password)) { password = ""; error = true; }
+		if(!WebValidator.sexValid(sex)) { sex = ""; error = true; }
 		
 		if(UsersUtil.exists(cell)) { request.setAttribute("userexists", true); cell = ""; error = true; }
 		
