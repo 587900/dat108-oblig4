@@ -16,11 +16,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="/Users/LEB/Documents/Eclipse/DAT107 JPA/dat107-oblig3-jpa/lib/javax.persistence-api-2.2.jar"/>
-	<classpathentry kind="lib" path="/Users/LEB/Downloads/openjpa-3.2.0.jar"/>
-	<classpathentry kind="lib" path="/Users/LEB/Downloads/openjpa-persistence-jdbc-3.2.0.jar"/>
-	<classpathentry kind="lib" path="/Users/LEB/Downloads/org.eclipse.persistence.jpa-2.5.0.jar"/>
-	<classpathentry kind="lib" path="/DAT107 JPA/dat107-oblig3-jpa/lib/eclipselink-2.7.7.jar"/>
-	<classpathentry kind="lib" path="/DAT107 JPA/dat107-oblig3-jpa/lib/postgresql-42.2.17.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
