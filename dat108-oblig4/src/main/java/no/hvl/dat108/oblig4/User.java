@@ -5,7 +5,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users", schema = "fest")
+//@Table(name = "users", schema = "fest")
+@Table(schema = "fest") // Må klassen hete det samme som tabellen? 
 //@NamedQuery(name = "findAllUsers", query ="SELECT a FROM users a")
 public class User {
 	

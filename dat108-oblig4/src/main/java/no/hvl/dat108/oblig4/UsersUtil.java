@@ -3,10 +3,15 @@ package no.hvl.dat108.oblig4;
 import java.util.Collection;
 import java.util.Comparator;
 
+import javax.ejb.EJB;
+
 public class UsersUtil {
 	
 //	private static final UserStorage userStorage = new LocalUserStorage();
-	private static final UserStorage userStorage = new DatabaseUserStorage();
+//	private static final UserStorage userStorage = new DatabaseUserStorage();
+	
+	@EJB
+	private static DatabaseUserStorage userStorage;
 	
 	private static final Comparator<User> ascFirstLast = (u1, u2) -> {
 		int score = u1.getFirstname().compareTo(u2.getFirstname());
