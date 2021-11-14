@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="no">
 <head>
 <meta charset="UTF-8">
 <!-- Fra https://purecss.io/ -->

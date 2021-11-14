@@ -3,25 +3,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="no">
 <head>
 <meta charset="UTF-8">
 <!-- Fra https://purecss.io/ -->
 <link rel="stylesheet"
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 <title>Deltagerliste</title>
+<style>
+.align-left { text-align: left; }
+.align-center { text-align: center; }
+.header-row { background-color: #cccccc; }
+.selected { background-color: #aaffaa; }
+</style>
 </head>
 <body>
 	<h2>Deltagerliste</h2>
 	<table class="pure-table">
-		<tr bgcolor="#cccccc">
+		<tr class="header-row">
 			<th>Kjønn</th>
-			<th align="left">Navn</th>
-			<th align="left">Mobil</th>
+			<th class="align-left">Navn</th>
+			<th class="align-left">Mobil</th>
 		</tr>
 		<c:forEach var="attendee" items="${users}">
-			<tr${attendee.cell == user.cell ? ' bgcolor="#aaffaa"':''}>
-				<td align="center">${attendee.sex == 'm' ? '&#9794;':'&#9792;'}</td>
+			<tr class="${attendee.cell == user.cell ? ' selected':''}">
+				<td class="align-center">${attendee.sex == 'm' ? '&#9794;':'&#9792;'}</td>
 				<td>${attendee.firstname} ${attendee.lastname}</td>
 				<td>${attendee.cell}</td>
 			</tr>
