@@ -15,6 +15,25 @@ import no.hvl.dat108.oblig4.User;
 import no.hvl.dat108.oblig4.UsersUtil;
 import no.hvl.dat108.oblig4.WebValidator;
 
+/*
+ * TODO:
+ * 
+ * UsersUtil set to database before delivery
+ * JUnits (HashUtil in particular)
+ * 
+ * 		// TODO #1: Vurdér PRG på feilmeldinger
+		// TODO #2: Hvis du er logget inn, vis en spesiell melding
+		// TODO #3: User input sanitazation
+		// TODO #5: / -> redirect to /paamelding
+ * 
+ * login:
+ * // TODO jsp password: Legg inn variabel for lengde i .xml
+// TODO Side dersom allerede logget inn
+// TODO Outline input fields med grønn/rød
+ * 
+ * 
+ * */
+
 @WebServlet(Globals.REGISTRATION_URL)
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,11 +42,6 @@ public class RegistrationServlet extends HttpServlet {
 	private UsersUtil usersUtil;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		// TODO #1: Vurdér PRG på feilmeldinger
-		// TODO #2: Hvis du er logget inn, vis en spesiell melding
-		// TODO #3: User input sanitazation
-		// TODO #5: / -> redirect to /paamelding
 		
 		if(request.getParameter("user-registered") != null) {
 			User user = LoginUtil.getLoggedInUser(request);

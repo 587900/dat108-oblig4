@@ -14,16 +14,10 @@ import no.hvl.dat108.oblig4.LoginUtil;
 import no.hvl.dat108.oblig4.User;
 import no.hvl.dat108.oblig4.UsersUtil;
 
-// TODO jsp password: Legg inn variabel for lengde i .xml
-// TODO Side dersom allerede logget inn
-// TODO Outline input fields med grønn/rød
-
 @WebServlet(Globals.LOGIN_URL)
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	//private UsersUtil usersUtil = UsersUtil.newInstance();
-	//private UsersUtil usersUtil = new UsersUtil();
 	@EJB
 	private UsersUtil usersUtil;
 	

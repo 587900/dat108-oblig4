@@ -12,5 +12,8 @@ public class Globals {
 	public static final String JSP_LOGOUT_LOCATION = "WEB-INF/jsp/logout.jsp";
 	public static final String JSP_REGISTRATION_LOCATION = "WEB-INF/jsp/registration_page.jsp";
 	public static final String JSP_REGISTRATION_SUCCESS_LOCATION = "WEB-INF/jsp/registration_success.jsp";
+	
+	public static final String HASHUTIL_SALT_ALGORITHM = "SHA1PRNG";
+	public static final String HASHUTIL_HASH_ALGORITHM = "PBKDF2WithHmacSHA256";
 
 }

@@ -11,6 +11,7 @@ import no.hvl.dat108.oblig4.storage.UserStorage;
 @Stateless
 public class UsersUtil {
 	
+	//You can use LocalUserStorage for testing
 	@EJB(mappedName = "LocalUserStorage")
 	//@EJB(mappedName = "DatabaseUserStorage")
 	private UserStorage userStorage;

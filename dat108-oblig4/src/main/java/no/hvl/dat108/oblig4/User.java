@@ -22,8 +22,8 @@ public class User implements IHasPrimaryKey {
 
 	public User() {}
 	
+	//We could consider using an enum for sex, but we decided to use Strings (m / f) instead.
 	private User(String firstname, String lastname, String cell, String hash, String salt, String sex) {
-		// TODO Consider making enum, look into cell phone changes
 		if(!sex.equals("m") && !sex.equals("f")) throw new IllegalArgumentException("Sex must be m or f.");
 		if(!cell.matches("^\\d{8}$")) throw new IllegalArgumentException("Cell must be 8 digits.");
 		this.firstname = firstname;

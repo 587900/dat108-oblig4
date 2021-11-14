@@ -99,6 +99,7 @@ input[type="password"].password-weak {
 				<label for="firstname">Fornavn:</label>
 				<!-- Oppgaven spesifiserer ikke om store bokstaver er tillatt etter første tegn i fornavn. -->
 				<!-- Beskrivelse på side 10 stemmer ikke med bildet på side 7. -->
+				<!-- Oppgaven nevner heller ikke noe om ikke-latinske bokstaver utenom æ, ø og å -->
 				<input id="firstname" type="text" name="firstname" value="${firstname}" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå -]{1,19}$"/>
 				<c:if test="${error == true && empty firstname}"><div class="error-tag">Ugyldig fornavn</div></c:if>
 			</div>

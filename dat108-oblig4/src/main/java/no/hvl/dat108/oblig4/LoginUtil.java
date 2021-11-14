@@ -17,7 +17,7 @@ public class LoginUtil {
 		return true;
 	}
 	
-	// true = was logged in, false = was not logged in.
+	/** @return true if the user was logged in, false if not. */
 	public static boolean logout(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if(session == null) return false;
