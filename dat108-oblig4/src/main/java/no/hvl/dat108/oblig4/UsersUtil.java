@@ -20,9 +20,8 @@ public class UsersUtil {
 		return score;
 	};
 	
-	//Note: The userStorage-mentioned exception cannot be caught here, since it is EJB-driven. It may only be caught by the first non-EJB in the chain (generally servlets).
-	/** Store a user. Thread-safe. Returns true on success, false otherwise. No duplicates by cell allowed. May throw exceptions to signal failure. */
-	public boolean addUser(User user) throws Exception {
+	/** Store a user. Thread-safe. Returns true on success, false otherwise. No duplicates by cell allowed. */
+	public boolean addUser(User user) {
 		return userStorage.store(user);
 	}
 	
@@ -43,16 +42,6 @@ public class UsersUtil {
 		if(user == null) return null;
 		if(!user.checkPassword(password)) return null;
 		return user;
-	}
-	
-	
-	public static class Helper {
-		
-		/** short-hand for try-catch about addUser. */
-		public static boolean addUserHandleException(User user, UsersUtil instance) {
-			try { return instance.addUser(user); } catch (Exception e) { return false; }
-		}
-		
 	}
 
 }

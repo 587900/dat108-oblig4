@@ -66,7 +66,7 @@ public class RegistrationServlet extends HttpServlet {
 		}
 		
 		User user = User.createNewFromPassword(firstname, lastname, cell, password, sex);
-		boolean success = UsersUtil.Helper.addUserHandleException(user, usersUtil);
+		boolean success = usersUtil.addUser(user);
 		if(!success) {
 			boolean userExists = usersUtil.exists(cell);
 			

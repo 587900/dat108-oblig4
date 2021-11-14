@@ -11,10 +11,9 @@ public abstract class UserStorage {
 	 * Store a user. This must be done in a thread-safe manner such that:
 	 * 		There exists no two users with the same cell number.
 	 * 		If .store(u), such that adding u would result in a duplicate: do not store u, and return false.
-	 * May also throw an exception to signal failure. This could mean a duplicate would occur, or any other failure.
 	 * @return true on success, false otherwise. 
 	 */
-	public abstract boolean store(User user) throws Exception;
+	public abstract boolean store(User user);
 	
 	/** Get a user by their cell number. */
 	public abstract User lookup(String cell);

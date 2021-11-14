@@ -20,7 +20,6 @@ public abstract class DAO<T extends IHasPrimaryKey> {
 		return em.find(clazz, id);
 	}
 	
-	// TODO: I am unsure. Is it possible for .getReference to get null, and then .persist to error on "already exists" ? This is handled through transactions, so...
 	/** persists an entity in the database, returns true on success, false if entity already exists */
 	public boolean create(T entity) {
 		if (em.getReference(clazz, entity.getPrimaryKey()) != null) return false;
