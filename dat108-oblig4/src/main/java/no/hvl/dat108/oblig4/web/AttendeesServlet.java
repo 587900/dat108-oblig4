@@ -27,8 +27,9 @@ public class AttendeesServlet extends HttpServlet {
 		if(!LoginUtil.isLoggedIn(request)) { response.sendRedirect(Globals.LOGIN_URL); return; }
 		
 		Collection<User> users = usersUtil.getAllUsersSorted();
-		request.setAttribute("users", users);
 		
+		request.setAttribute("users", users);
+		request.setAttribute("constants", Globals.webConstants);
 		request.getRequestDispatcher(Globals.FILELOC_JSP_ATTENDEES).forward(request, response);
 		
 	}

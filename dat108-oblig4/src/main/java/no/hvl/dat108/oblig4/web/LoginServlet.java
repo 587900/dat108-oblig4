@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if(request.getParameter("wrong") != null) request.setAttribute("wrong", true);
 		
+		request.setAttribute("constants", Globals.webConstants);
 		request.getRequestDispatcher(Globals.FILELOC_JSP_LOGIN).forward(request, response);
 		
 	}

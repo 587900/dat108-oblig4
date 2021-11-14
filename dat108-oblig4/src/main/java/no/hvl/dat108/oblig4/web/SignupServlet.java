@@ -40,6 +40,7 @@ public class SignupServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setAttribute("constants", Globals.webConstants);
 		boolean loggedIn = LoginUtil.getLoggedInUser(request) != null;
 		
 		if(request.getParameter("user-registered") != null) {
@@ -115,6 +116,7 @@ public class SignupServlet extends HttpServlet {
 	
 	private void respondError(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("error", true);
+		request.setAttribute("constants", Globals.webConstants);
 		
 		request.getRequestDispatcher(Globals.FILELOC_JSP_SIGNUP).forward(request, response);
 	}

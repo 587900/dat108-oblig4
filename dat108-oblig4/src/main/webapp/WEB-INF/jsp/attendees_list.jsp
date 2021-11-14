@@ -34,7 +34,7 @@
 		</c:forEach>
 	</table>
 	<p>
-		<a href="loggut">Ferdig</a>
+		<a href="${constants.WEB_LOGOUT_URL}">Ferdig</a>
 	</p>
 </body>
 </html>

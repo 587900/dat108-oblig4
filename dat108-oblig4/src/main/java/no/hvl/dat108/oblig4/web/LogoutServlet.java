@@ -18,6 +18,7 @@ public class LogoutServlet extends HttpServlet {
 		
 		LoginUtil.logout(request);
 		
+		request.setAttribute("constants", Globals.webConstants);
 		request.getRequestDispatcher(Globals.FILELOC_JSP_LOGOUT).forward(request, response);
 		
 	}

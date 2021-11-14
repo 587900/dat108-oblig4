@@ -14,7 +14,7 @@
 <body>
 	<h2>Logg inn</h2>
 	<p>Det er kun registrerte deltagere som får se deltagerlisten.</p>
-	<p>For å registrere deg, <a href="/paamelding">klikk her</a></p>
+	<p>For å registrere deg, <a href="${constants.WEB_SIGNUP_URL}">klikk her</a></p>
 	<p>
 		<c:if test="${wrong == true}"><font color="red">Ugyldig mobilnummer og/eller passord</font></c:if>
 	</p>

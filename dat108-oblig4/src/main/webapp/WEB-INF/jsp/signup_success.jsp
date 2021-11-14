@@ -20,6 +20,6 @@
 		&nbsp;&nbsp;&nbsp;${user.cell}<br />
 		&nbsp;&nbsp;&nbsp;${user.sex == 'm' ? 'Mann':'Kvinne'}<br />
 	</p>
-	<a href="deltagerliste">Gå til deltagerlisten</a>
+	<a href="${constants.WEB_ATTENDEES_URL}">Gå til deltagerlisten</a>
 </body>
 </html>

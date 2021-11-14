@@ -137,8 +137,8 @@ input[type="password"].password-weak {
 		</fieldset>
 	</form>
 	
-	<c:if test="${loggedin != true}"><p>Allerede registrert? <a href="logginn">Logg inn her.</a></p></c:if>
-	<c:if test="${loggedin == true}"><p>Du er allerede logget inn. Er du sikker på du vil melde på en ny bruker? For å gå til deltagerliste, <a href="deltagerliste">klikk her</a></p></c:if>
+	<c:if test="${loggedin != true}"><p>Allerede registrert? <a href="${constants.WEB_LOGIN_URL}">Logg inn her.</a></p></c:if>
+	<c:if test="${loggedin == true}"><p>Du er allerede logget inn. Er du sikker på du vil melde på en ny bruker? For å gå til deltagerliste, <a href="${constants.WEB_ATTENDEES_URL}">klikk her</a></p></c:if>
 
 </body>
 </html>
