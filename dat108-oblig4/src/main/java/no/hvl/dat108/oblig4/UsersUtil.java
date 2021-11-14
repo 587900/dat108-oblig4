@@ -12,8 +12,8 @@ import no.hvl.dat108.oblig4.storage.UserStorage;
 public class UsersUtil {
 	
 	//You can use LocalUserStorage for testing
-	@EJB(mappedName = "LocalUserStorage")
-	//@EJB(mappedName = "DatabaseUserStorage")
+	//@EJB(mappedName = "LocalUserStorage")
+	@EJB(mappedName = "DatabaseUserStorage")
 	private UserStorage userStorage;
 	
 	private static final Comparator<User> ascFirstLast = (u1, u2) -> {

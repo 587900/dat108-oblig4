@@ -15,14 +15,6 @@ import no.hvl.dat108.oblig4.User;
 import no.hvl.dat108.oblig4.UsersUtil;
 import no.hvl.dat108.oblig4.WebValidator;
 
-/*
- * TODO:
- * 
- * UsersUtil set to database before delivery
- * JUnits (HashUtil in particular)
- * 
- * */
-
 @WebServlet(Globals.SIGNUP_URL)
 public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
