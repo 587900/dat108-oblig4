@@ -7,14 +7,23 @@ import java.util.Comparator;
 
 public abstract class UserStorage {
 	
-	// True = success, false = fail
-	public abstract boolean store(User user);
+	/** 
+	 * Store a user. This must be done in a thread-safe manner such that:
+	 * 		There exists no two users with the same cell number.
+	 * 		If .store(u), such that adding u would result in a duplicate: do not store u, and return false.
+	 * May also throw an exception to signal failure. This could mean a duplicate would occur, or any other failure.
+	 * @return true on success, false otherwise. 
+	 */
+	public abstract boolean store(User user) throws Exception;
 	
+	/** Get a user by their cell number. */
 	public abstract User lookup(String cell);
 	
-	public boolean exists(String cell) { return lookup(cell) != null; }
-
+	/** Get all users currently stored. */
 	public abstract Collection<User> getAllUsers();
+	
+	/** @return true if user exists by looking up their cell number. */
+	public boolean exists(String cell) { return lookup(cell) != null; }
 	
 	/**
 	 * Get all users and sort by comparator.

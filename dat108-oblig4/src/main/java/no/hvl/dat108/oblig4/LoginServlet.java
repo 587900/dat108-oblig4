@@ -2,11 +2,14 @@ package no.hvl.dat108.oblig4;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import no.hvl.dat108.oblig4.helpers.UserDAO;
 
 // TODO jsp password: Legg inn variabel for lengde i .xml
 // TODO Side dersom allerede logget inn
@@ -15,7 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/logginn")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	//private UsersUtil usersUtil = UsersUtil.newInstance();
+	//private UsersUtil usersUtil = new UsersUtil();
+	@EJB
+	private UsersUtil usersUtil;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(request.getParameter("wrong") != null) request.setAttribute("wrong", true);
@@ -36,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 		
-		User user = UsersUtil.tryGetUser(cell, password);
+		User user = usersUtil.tryGetUser(cell, password);
 		if(user == null) {
 			response.sendRedirect("/logginn?wrong");
 			return;

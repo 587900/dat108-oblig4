@@ -5,22 +5,16 @@
     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
     version="2.2">
     
-	<persistence-unit name="fest" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="fest" transaction-type="JTA">
 		
-		<!-- <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<jta-data-source>DAT108FestDataSource</jta-data-source>-->
+		<jta-data-source>DAT108FestDataSource</jta-data-source>
 		
 		<class>no.hvl.dat108.oblig4.User</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		
 		<properties>
-            <property name="eclipselink.logging.level" value="WARNING"/>
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/dat108?currentSchema=fest" />
-			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="slipp Meg inn davel!" />
-            
-            <!-- <property name="eclipselink.weaving" value="false" /> -->
+            <property name="eclipselink.logging.level" value="FINEST"/>
 		</properties>
 		
 	</persistence-unit>

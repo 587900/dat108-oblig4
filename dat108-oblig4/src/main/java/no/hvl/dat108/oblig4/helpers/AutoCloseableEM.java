@@ -3,6 +3,7 @@ package no.hvl.dat108.oblig4.helpers;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+//TODO: delete this class, no longer needed because of EJBs
 public class AutoCloseableEM implements AutoCloseable {
 
 	private EntityManager em;

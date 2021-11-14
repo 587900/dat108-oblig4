@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import no.hvl.dat108.oblig4.helpers.IHasPrimaryKey;
+
 @Entity
-//@Table(name = "users", schema = "fest")
-@Table(schema = "fest") // Må klassen hete det samme som tabellen? 
-//@NamedQuery(name = "findAllUsers", query ="SELECT a FROM users a")
-public class User {
+@Table(name = "users")
+public class User implements IHasPrimaryKey {
 	
 	public static HashUtil hashUtil = new HashUtil();
 	
@@ -62,5 +62,10 @@ public class User {
 	
 	public String toString() {
 		return String.format("('%s', '%s', '%s', '%s', '%s', '%s')", firstname, lastname, cell, hash, salt, sex);
+	}
+
+	@Override
+	public Object getPrimaryKey() {
+		return getCell();
 	}
 }

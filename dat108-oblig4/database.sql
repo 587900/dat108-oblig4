@@ -6,7 +6,7 @@ CREATE TABLE users
 (
    firstname VARCHAR (20),
    lastname VARCHAR (20),
-   cell VARCHAR (8),
+   cell CHAR (8),
    hash CHAR (64),
    salt CHAR (32),
    sex CHAR (1),

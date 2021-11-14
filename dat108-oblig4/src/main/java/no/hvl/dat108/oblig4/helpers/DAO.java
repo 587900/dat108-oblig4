@@ -5,11 +5,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public abstract class DAO<T> {
+public abstract class DAO<T extends IHasPrimaryKey> {
 	
 	private Class<T> clazz;
 	
-	@PersistenceContext(name="fest")
+	@PersistenceContext
 	EntityManager em;
 	
 	public DAO(Class<T> clazz) {
@@ -20,13 +20,16 @@ public abstract class DAO<T> {
 		return em.find(clazz, id);
 	}
 	
-	public void create(T entity) {
+	// TODO: I am unsure. Is it possible for .getReference to get null, and then .persist to error on "already exists" ? This is handled through transactions, so...
+	/** persists an entity in the database, returns true on success, false if entity already exists */
+	public boolean create(T entity) {
+		if (em.getReference(clazz, entity.getPrimaryKey()) != null) return false;
 		em.persist(entity);
+		return true;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
-		return em.createQuery("from " + clazz.getName()).getResultList();
+		return em.createQuery("SELECT a FROM "+clazz.getName()+" a", clazz).getResultList();	//full class name (.getName()) does indeed work.
 	}
 
 }
