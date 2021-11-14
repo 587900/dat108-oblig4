@@ -22,7 +22,6 @@ import no.hvl.dat108.oblig4.WebValidator;
  * JUnits (HashUtil in particular)
  * 
  * 		// TODO #1: Vurdér PRG på feilmeldinger
-		// TODO #2: Hvis du er logget inn, vis en spesiell melding
 		// TODO #3: User input sanitazation
 		// TODO #5: / -> redirect to /paamelding
  * 
@@ -43,13 +42,15 @@ public class RegistrationServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		boolean loggedIn = LoginUtil.getLoggedInUser(request) != null;
+		
 		if(request.getParameter("user-registered") != null) {
-			User user = LoginUtil.getLoggedInUser(request);
-			if(user == null) { response.sendRedirect(Globals.REGISTRATION_URL); return; }
+			if(!loggedIn) { response.sendRedirect(Globals.REGISTRATION_URL); return; }
 			request.getRequestDispatcher(Globals.JSP_REGISTRATION_SUCCESS_LOCATION).forward(request, response);
 			return;
 		}
 		
+		if (loggedIn) request.setAttribute("loggedin", true);
 		request.getRequestDispatcher(Globals.JSP_REGISTRATION_LOCATION).forward(request, response);
 		
 	}
