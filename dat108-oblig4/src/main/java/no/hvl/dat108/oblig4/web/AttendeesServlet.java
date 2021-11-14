@@ -29,7 +29,7 @@ public class AttendeesServlet extends HttpServlet {
 		Collection<User> users = usersUtil.getAllUsersSorted();
 		request.setAttribute("users", users);
 		
-		request.getRequestDispatcher(Globals.JSP_ATTENDEES_LOCATION).forward(request, response);
+		request.getRequestDispatcher(Globals.FILELOC_JSP_ATTENDEES).forward(request, response);
 		
 	}
 

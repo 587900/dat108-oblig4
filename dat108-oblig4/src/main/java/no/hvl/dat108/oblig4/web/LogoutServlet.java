@@ -18,7 +18,7 @@ public class LogoutServlet extends HttpServlet {
 		
 		LoginUtil.logout(request);
 		
-		request.getRequestDispatcher(Globals.JSP_LOGOUT_LOCATION).forward(request, response);
+		request.getRequestDispatcher(Globals.FILELOC_JSP_LOGOUT).forward(request, response);
 		
 	}
 }

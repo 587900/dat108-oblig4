@@ -33,8 +33,8 @@ import no.hvl.dat108.oblig4.WebValidator;
  * 
  * */
 
-@WebServlet(Globals.REGISTRATION_URL)
-public class RegistrationServlet extends HttpServlet {
+@WebServlet(Globals.SIGNUP_URL)
+public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	@EJB
@@ -45,13 +45,13 @@ public class RegistrationServlet extends HttpServlet {
 		boolean loggedIn = LoginUtil.getLoggedInUser(request) != null;
 		
 		if(request.getParameter("user-registered") != null) {
-			if(!loggedIn) { response.sendRedirect(Globals.REGISTRATION_URL); return; }
-			request.getRequestDispatcher(Globals.JSP_REGISTRATION_SUCCESS_LOCATION).forward(request, response);
+			if(!loggedIn) { response.sendRedirect(Globals.SIGNUP_URL); return; }
+			request.getRequestDispatcher(Globals.FILELOC_JSP_SIGNUP_SUCCESS).forward(request, response);
 			return;
 		}
 		
 		if (loggedIn) request.setAttribute("loggedin", true);
-		request.getRequestDispatcher(Globals.JSP_REGISTRATION_LOCATION).forward(request, response);
+		request.getRequestDispatcher(Globals.FILELOC_JSP_SIGNUP).forward(request, response);
 		
 	}
 
@@ -101,7 +101,7 @@ public class RegistrationServlet extends HttpServlet {
 		LoginUtil.login(request, user);
 
 		// Redirect to this servlet (get)
-		response.sendRedirect(Globals.REGISTRATION_URL + "?user-registered");
+		response.sendRedirect(Globals.SIGNUP_URL + "?user-registered");
 		
 	}
 	
@@ -117,7 +117,7 @@ public class RegistrationServlet extends HttpServlet {
 	private void respondError(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("error", true);
 		
-		request.getRequestDispatcher(Globals.JSP_REGISTRATION_LOCATION).forward(request, response);
+		request.getRequestDispatcher(Globals.FILELOC_JSP_SIGNUP).forward(request, response);
 	}
 	
 	private void respondErrorUserExists(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
