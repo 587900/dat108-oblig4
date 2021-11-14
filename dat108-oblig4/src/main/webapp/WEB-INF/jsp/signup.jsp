@@ -99,28 +99,28 @@
 				<!-- Oppgaven spesifiserer ikke om store bokstaver er tillatt etter første tegn i fornavn. -->
 				<!-- Beskrivelse på side 10 stemmer ikke med bildet på side 7. -->
 				<!-- Oppgaven nevner heller ikke noe om ikke-latinske bokstaver utenom æ, ø og å -->
-				<input id="firstname" type="text" name="firstname" value="${firstname}" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå -]{1,19}$"/>
+				<input id="firstname" type="text" name="firstname" value="${firstname}" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå -]{1,19}$" title="Må begynne med en stor bokstav, etterfulgt av småbokstaver, mellomromer og/eller blindestreker"/>
 				<c:if test="${error == true && empty firstname}"><div class="error-tag">Ugyldig fornavn</div></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="lastname">Etternavn:</label>
-				<input id="lastname" type="text" name="lastname" value="${lastname}" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå-]{1,19}$"/>
+				<input id="lastname" type="text" name="lastname" value="${lastname}" required pattern="^[A-ZÆØÅ][A-ZÆØÅa-zæøå-]{1,19}$" title="Må begynne med en stor bokstav, etterfulgt av småbokstaver og/eller blindestreker"/>
 				<c:if test="${error == true && empty lastname}"><div class="error-tag">Ugyldig etternavn</div></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="cell">Mobil (8 siffer):</label>
-				<input id="cell" type="text" name="cell" value="${cell}" required pattern="^\d{8}$"/>
+				<input id="cell" type="text" name="cell" value="${cell}" required pattern="^\d{8}$" title="Må vere et 8-sifret tall"/>
 				<c:if test="${error == true && userexists != true && empty cell}"><div class="error-tag">Ugyldig mobil</div></c:if>
 				<c:if test="${error == true && userexists == true}"><div class="error-tag">Mobilnummer allerede registrert.</div></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="password">Passord:</label>
-				<input id="password" type="password" name="password" value="${password}" required pattern=".{8,}"/>
+				<input id="password" type="password" name="password" value="${password}" required pattern=".{8,}" title="Alle passord er på minst 8 bokstaver"/>
 				<c:if test="${error == true && empty password}"><div class="error-tag">Passord må være 8 tegn eller mer.</div></c:if>
 			</div>
 			<div class="pure-control-group">
 				<label for="passwordRepeated">Passord repetert:</label>
-				<input id="passwordRepeated" type="password" name="passwordRepeated" value="${passwordRepeated}" required/>
+				<input id="passwordRepeated" type="password" name="passwordRepeated" value="${passwordRepeated}" required title="Kan ikke vere tom"/>
 				<c:if test="${error == true && empty passwordRepeated}"><div class="error-tag">Passordene må være like.</div></c:if>
 			</div>
 			<div class="pure-control-group">
