@@ -28,10 +28,5 @@ public class DatabaseUserStorage extends UserStorage {
 	public Collection<User> getAllUsers() {
 		return userDAO.findAll();
 	}
-	
-	@Override
-	public boolean exists(String cell) {
-		return userDAO.exists(cell);
-	}
 
 }
