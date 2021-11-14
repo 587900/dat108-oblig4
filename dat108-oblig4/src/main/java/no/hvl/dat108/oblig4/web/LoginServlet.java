@@ -24,6 +24,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(request.getParameter("wrong") != null) request.setAttribute("wrong", true);
+		if (LoginUtil.isLoggedIn(request)) request.setAttribute("loggedin", true);
 		
 		request.setAttribute("constants", Globals.webConstants);
 		request.getRequestDispatcher(Globals.FILELOC_JSP_LOGIN).forward(request, response);

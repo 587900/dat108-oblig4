@@ -20,14 +20,7 @@ import no.hvl.dat108.oblig4.WebValidator;
  * 
  * UsersUtil set to database before delivery
  * JUnits (HashUtil in particular)
- * 
- * 		// TODO #1: Vurdér PRG på feilmeldinger
- * 
- * login:
- * // TODO jsp password: Legg inn variabel for lengde i .xml
-// TODO Side dersom allerede logget inn
-// TODO Outline input fields med grønn/rød
- * 
+ * delete web.xml?
  * 
  * */
 

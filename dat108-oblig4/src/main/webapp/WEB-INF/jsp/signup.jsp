@@ -11,27 +11,26 @@
 	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 <title>Påmelding</title>
 <style>
-input[type="text"], input[type="password"] {
-	border-color: green!important;
-}
-input[type="text"]:invalid, input[type="password"]:invalid {
-	border-color: red!important;
-}
-input[type="password"].password-weak {
-	border-color: yellow!important;
-}
-.error-tag {
-	display: inline-block;
-	color: red;
-}
-
+	input[type="text"], input[type="password"] {
+		border-color: green!important;
+	}
+	input[type="text"]:invalid, input[type="password"]:invalid {
+		border-color: red!important;
+	}
+	input[type="password"].password-weak {
+		border-color: yellow!important;
+	}
+	.error-tag {
+		display: inline-block;
+		color: red;
+	}
 </style>
 <script>
 	
 	class PasswordValidator {
 		// Returns strength level (1 = weak, 2 = strong)
 		getPasswordStrength(password) {
-			if(password.length <= 14) return 1;
+			if(password.length < 14) return 1;
 			else return 2;
 		}
 	}
@@ -116,7 +115,7 @@ input[type="password"].password-weak {
 			</div>
 			<div class="pure-control-group">
 				<label for="password">Passord:</label>
-				<input id="password" type="password" name="password" value="${password}" required minlength="8"/>
+				<input id="password" type="password" name="password" value="${password}" required pattern=".{8,}"/>
 				<c:if test="${error == true && empty password}"><div class="error-tag">Passord må være 8 tegn eller mer.</div></c:if>
 			</div>
 			<div class="pure-control-group">
