@@ -6,6 +6,8 @@ import java.util.Comparator;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import no.hvl.dat108.oblig4.storage.UserStorage;
+
 @Stateless
 public class UsersUtil {
 	

@@ -1,4 +1,4 @@
-package no.hvl.dat108.oblig4;
+package no.hvl.dat108.oblig4.web;
 
 import java.io.IOException;
 
@@ -9,13 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import no.hvl.dat108.oblig4.helpers.UserDAO;
+import no.hvl.dat108.oblig4.Globals;
+import no.hvl.dat108.oblig4.LoginUtil;
+import no.hvl.dat108.oblig4.User;
+import no.hvl.dat108.oblig4.UsersUtil;
 
 // TODO jsp password: Legg inn variabel for lengde i .xml
 // TODO Side dersom allerede logget inn
 // TODO Outline input fields med grønn/rød
 
-@WebServlet("/logginn")
+@WebServlet(Globals.LOGIN_URL)
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -46,12 +49,12 @@ public class LoginServlet extends HttpServlet {
 		
 		User user = usersUtil.tryGetUser(cell, password);
 		if(user == null) {
-			response.sendRedirect("/logginn?wrong");
+			response.sendRedirect(Globals.LOGIN_URL + "?wrong");
 			return;
 		}
 		
 		LoginUtil.login(request, user);
-		response.sendRedirect("/deltagerliste");
+		response.sendRedirect(Globals.ATTENDEES_URL);
 	}
 
 }

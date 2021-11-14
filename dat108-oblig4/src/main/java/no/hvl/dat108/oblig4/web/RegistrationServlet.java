@@ -1,4 +1,4 @@
-package no.hvl.dat108.oblig4;
+package no.hvl.dat108.oblig4.web;
 
 import java.io.IOException;
 
@@ -9,7 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/paamelding")
+import no.hvl.dat108.oblig4.Globals;
+import no.hvl.dat108.oblig4.LoginUtil;
+import no.hvl.dat108.oblig4.User;
+import no.hvl.dat108.oblig4.UsersUtil;
+import no.hvl.dat108.oblig4.WebValidator;
+
+@WebServlet(Globals.REGISTRATION_URL)
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -26,7 +32,7 @@ public class RegistrationServlet extends HttpServlet {
 		
 		if(request.getParameter("user-registered") != null) {
 			User user = LoginUtil.getLoggedInUser(request);
-			if(user == null) { response.sendRedirect("/paamelding"); return; }
+			if(user == null) { response.sendRedirect(Globals.REGISTRATION_URL); return; }
 			request.getRequestDispatcher("WEB-INF/jsp/paameldingsbekreftelse.jsp").forward(request, response);
 			return;
 		}
@@ -81,7 +87,7 @@ public class RegistrationServlet extends HttpServlet {
 		LoginUtil.login(request, user);
 
 		// Redirect to this servlet (get)
-		response.sendRedirect("/paamelding?user-registered");
+		response.sendRedirect(Globals.REGISTRATION_URL + "?user-registered");
 		
 	}
 	

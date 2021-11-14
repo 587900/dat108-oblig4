@@ -1,10 +1,11 @@
-package no.hvl.dat108.oblig4;
+package no.hvl.dat108.oblig4.storage;
 
 import java.util.Collection;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import no.hvl.dat108.oblig4.User;
 import no.hvl.dat108.oblig4.helpers.UserDAO;
 
 @Stateless

@@ -1,9 +1,11 @@
-package no.hvl.dat108.oblig4;
+package no.hvl.dat108.oblig4.storage;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+
+import no.hvl.dat108.oblig4.User;
 
 public abstract class UserStorage {
 	
