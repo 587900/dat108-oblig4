@@ -20,7 +20,6 @@ import no.hvl.dat108.oblig4.WebValidator;
  * 
  * UsersUtil set to database before delivery
  * JUnits (HashUtil in particular)
- * delete web.xml?
  * 
  * */
 
