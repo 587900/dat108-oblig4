@@ -24,7 +24,7 @@ public class LocalUserStorage extends UserStorage {
 		storage.store(User.createNewFromPassword("Are", "Clementin", "66666666", "66666666", "f"));
 		storage.store(User.createNewFromPassword("Chris P", "Bacon", "77777777", "77777777", "m"));
 		storage.store(User.createNewFromPassword("Janice", "Keihanaikukauaka", "88888888", "88888888", "f"));
-		storage.getAllUsers().forEach(System.out::println);
+		//storage.getAllUsers().forEach(System.out::println);
 	}
 	
 	@Override
