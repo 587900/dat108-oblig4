@@ -29,7 +29,7 @@ public class AttendeesServlet extends HttpServlet {
 		Collection<User> users = usersUtil.getAllUsersSorted();
 		request.setAttribute("users", users);
 		
-		request.getRequestDispatcher("WEB-INF/jsp/deltagerliste.jsp").forward(request, response);
+		request.getRequestDispatcher(Globals.JSP_ATTENDEES_LOCATION).forward(request, response);
 		
 	}
 

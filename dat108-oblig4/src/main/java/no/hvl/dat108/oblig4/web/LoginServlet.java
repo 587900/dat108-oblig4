@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if(request.getParameter("wrong") != null) request.setAttribute("wrong", true);
 		
-		request.getRequestDispatcher("WEB-INF/jsp/logginn.jsp").forward(request, response);
+		request.getRequestDispatcher(Globals.JSP_LOGIN_LOCATION).forward(request, response);
 		
 	}
 

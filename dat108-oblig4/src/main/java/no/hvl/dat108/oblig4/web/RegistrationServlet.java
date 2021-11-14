@@ -27,17 +27,16 @@ public class RegistrationServlet extends HttpServlet {
 		// TODO #1: Vurdér PRG på feilmeldinger
 		// TODO #2: Hvis du er logget inn, vis en spesiell melding
 		// TODO #3: User input sanitazation
-		// TODO #4: Sjekk ny HTML
 		// TODO #5: / -> redirect to /paamelding
 		
 		if(request.getParameter("user-registered") != null) {
 			User user = LoginUtil.getLoggedInUser(request);
 			if(user == null) { response.sendRedirect(Globals.REGISTRATION_URL); return; }
-			request.getRequestDispatcher("WEB-INF/jsp/paameldingsbekreftelse.jsp").forward(request, response);
+			request.getRequestDispatcher(Globals.JSP_REGISTRATION_SUCCESS_LOCATION).forward(request, response);
 			return;
 		}
 		
-		request.getRequestDispatcher("WEB-INF/jsp/paameldingsskjema.jsp").forward(request, response);
+		request.getRequestDispatcher(Globals.JSP_REGISTRATION_LOCATION).forward(request, response);
 		
 	}
 
@@ -103,7 +102,7 @@ public class RegistrationServlet extends HttpServlet {
 	private void respondError(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("error", true);
 		
-		request.getRequestDispatcher("WEB-INF/jsp/paameldingsskjema.jsp").forward(request, response);
+		request.getRequestDispatcher(Globals.JSP_REGISTRATION_LOCATION).forward(request, response);
 	}
 	
 	private void respondErrorUserExists(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
