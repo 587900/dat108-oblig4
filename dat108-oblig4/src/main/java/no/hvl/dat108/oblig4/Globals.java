@@ -6,6 +6,7 @@ public class Globals {
 	public static final String LOGIN_URL = "/logginn";
 	public static final String LOGOUT_URL = "/loggut";
 	public static final String SIGNUP_URL = "/paamelding";
+	public static final String WELCOME_URL = "/";
 	
 	public static final String FILELOC_JSP_ATTENDEES = "WEB-INF/jsp/attendees_list.jsp";
 	public static final String FILELOC_JSP_LOGIN = "WEB-INF/jsp/login.jsp";

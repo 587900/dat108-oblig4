@@ -22,8 +22,6 @@ import no.hvl.dat108.oblig4.WebValidator;
  * JUnits (HashUtil in particular)
  * 
  * 		// TODO #1: Vurdér PRG på feilmeldinger
-		// TODO #3: User input sanitazation
-		// TODO #5: / -> redirect to /paamelding
  * 
  * login:
  * // TODO jsp password: Legg inn variabel for lengde i .xml
@@ -71,6 +69,7 @@ public class SignupServlet extends HttpServlet {
 			return;
 		}
 		
+		//Note: no need for input sanitization due to WebValidator pattern requirements (illegal symbols not permitted by it)
 		boolean error = false;
 		if(!WebValidator.firstnameValid(firstname)) 						{ error = true; firstname = ""; }
 		if(!WebValidator.lastnameValid(lastname)) 							{ error = true; lastname = ""; }
